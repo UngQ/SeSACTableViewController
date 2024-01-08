@@ -7,39 +7,54 @@
 
 import UIKit
 
+struct ShoppingList: Codable {
+    let itemName: String
+    var checkBool: Bool
+    var starBool: Bool
+}
+
 class ThirdTableViewController: UITableViewController {
 
     @IBOutlet var titleTextLabel: UILabel!
     @IBOutlet var inputTextField: UITextField!
     @IBOutlet var appendButton: UIButton!
+    @IBOutlet var topView: UIView!
     
-    var list: [String] = []
-    var checkAndStar: [[Bool]] = []
+    var shoppingList: [ShoppingList] = []
     
-    var savedList = UserDefaults.standard.array(forKey: "list") as? [String]
-    var savedCheckAndStar = UserDefaults.standard.array(forKey: "bool") as? [[Bool]]
+// ShoppingList를 구조체로 구현하니, 기존처럼 UserDefault.standard.array가 먹히지 않아서 찾아봄..
+// 아래 코드가 지금까지의 진도로는 잘 이해가 안가지만, 기존에 UserDefault 기능을 구현했어서 살려보고 싶어서 복붙함
+    var savedShoppingList: [ShoppingList] {
+        get {
+            if let data = UserDefaults.standard.data(forKey: "list") {
+                return (try? JSONDecoder().decode([ShoppingList].self, from: data)) ?? []
+            }
+            return []
+        }
+        set {
+            if let data = try? JSONEncoder().encode(newValue) {
+                UserDefaults.standard.set(data, forKey: "list")
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         designMainView()
-
-        list = savedList ?? []
-        checkAndStar = savedCheckAndStar ?? []
+        
+        shoppingList = savedShoppingList
     }
     
-    //추가 버튼 클릭시 기능
     @IBAction func appendButtonClicked(_ sender: UIButton) {
         
         if inputTextField.text != "" {
-            list.append(inputTextField.text!)
-            checkAndStar.append([false, false])
             
-            UserDefaults.standard.set(list, forKey: "list")
-            UserDefaults.standard.set(checkAndStar, forKey: "bool")
+            shoppingList.append(ShoppingList(itemName: inputTextField.text!, checkBool: false, starBool: false))
+                                
+            savedShoppingList = shoppingList
             
             successAlert()
             inputTextField.text = ""
-            
             tableView.reloadData()
         } else {
             cancelAlert()
@@ -48,60 +63,45 @@ class ThirdTableViewController: UITableViewController {
     
     //체크 버튼 클릭
     @IBAction func checkButtonClicked(_ sender: UIButton) {
-        if checkAndStar[sender.tag][0] == false {
-            checkAndStar[sender.tag][0] = true
-        } else if checkAndStar[sender.tag][0] == true {
-            checkAndStar[sender.tag][0] = false
-        }
-        UserDefaults.standard.set(checkAndStar, forKey: "bool")
-        tableView.reloadData()
+        shoppingList[sender.tag].checkBool.toggle()
+        savedShoppingList = shoppingList
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
     }
     
     //스타 버튼 클릭
     @IBAction func starButtonClicked(_ sender: UIButton) {
-        if checkAndStar[sender.tag][1] == false {
-            checkAndStar[sender.tag][1] = true
-        } else if checkAndStar[sender.tag][1] == true {
-            checkAndStar[sender.tag][1] = false
-        }
-        UserDefaults.standard.set(checkAndStar, forKey: "bool")
-        tableView.reloadData()
+        shoppingList[sender.tag].starBool.toggle()
+        savedShoppingList = shoppingList
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return shoppingList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ThirdTableViewCell", for: indexPath) as! ThirdTableViewCell
         
-        switch checkAndStar {
-        case []:
+        switch shoppingList.count {
+        case 0:
             return cell
         default:
-            cell.backgroundColor = .systemGray6
-            cell.layer.cornerRadius = 15
-            cell.layer.borderColor = UIColor.white.cgColor
-            cell.layer.borderWidth = 1
+            cell.cellView.backgroundColor = .systemGray6
+            cell.cellView.layer.cornerRadius = 15
+            cell.cellView.layer.borderColor = UIColor.white.cgColor
+            cell.cellView.layer.borderWidth = 1
 
-            //Check, Star 버튼에서 indexPath.row를 활용하기 위해 tag에 담기
             cell.checkButton.tag = indexPath.row
             cell.starButton.tag = indexPath.row
         
-            cell.itemTextLabel.text = list[indexPath.row]
+            cell.itemTextLabel.text = shoppingList[indexPath.row].itemName
             
-            if checkAndStar[indexPath.row][0] == false {
-                cell.checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-            } else if checkAndStar[indexPath.row][0] == true {
-                cell.checkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
-            }
+            let checkImage = shoppingList[indexPath.row].checkBool ? "checkmark.square.fill" : "checkmark.square"
+            let starImage = shoppingList[indexPath.row].starBool ? "star.fill" : "star"
             
-            if checkAndStar[indexPath.row][1] == false {
-                cell.starButton.setImage(UIImage(systemName: "star"), for: .normal)
-            } else if checkAndStar[indexPath.row][1] == true {
-                cell.starButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
-            }
+            cell.checkButton.setImage(UIImage(systemName: checkImage), for: .normal)
+            cell.starButton.setImage(UIImage(systemName: starImage), for: .normal)
 
             return cell
         }
@@ -118,12 +118,8 @@ class ThirdTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            list.remove(at: indexPath.row)
-            checkAndStar.remove(at: indexPath.row)
-            
-            UserDefaults.standard.set(list, forKey: "list")
-            UserDefaults.standard.set(checkAndStar, forKey: "bool")
-            
+            shoppingList.remove(at: indexPath.row)
+            savedShoppingList = shoppingList
             tableView.reloadData()
         }
     }
@@ -145,14 +141,17 @@ class ThirdTableViewController: UITableViewController {
     func designMainView() {
         view.tintColor = .black
   
+        inputTextField.clipsToBounds = true
+        inputTextField.backgroundColor = .systemGray6
         inputTextField.layer.cornerRadius = 15
-        inputTextField.layer.borderColor = UIColor.black.cgColor
+        inputTextField.layer.borderColor = UIColor.systemGray6.cgColor
         inputTextField.layer.borderWidth = 1
-        appendButton.layer.cornerRadius = 15
-        
+        inputTextField.placeholder = "무엇을 구매하실 건가요?"
+
         titleTextLabel.text = "Shopping List"
         titleTextLabel.font = .boldSystemFont(ofSize: 24)
         
+        appendButton.layer.cornerRadius = 15
         appendButton.setTitle("Add", for: .normal)
         appendButton.backgroundColor = .systemGray5
     }

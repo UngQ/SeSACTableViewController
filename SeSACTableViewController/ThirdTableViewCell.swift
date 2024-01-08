@@ -9,6 +9,7 @@ import UIKit
 
 class ThirdTableViewCell: UITableViewCell {
 
+    @IBOutlet var cellView: UIView!
     @IBOutlet var checkButton: UIButton!
     @IBOutlet var starButton: UIButton!
     
