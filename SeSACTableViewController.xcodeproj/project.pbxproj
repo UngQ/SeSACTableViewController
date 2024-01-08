@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A57BAA502B4C46C00007FA1D /* TravelMagazineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57BAA4F2B4C46C00007FA1D /* TravelMagazineTableViewController.swift */; };
+		A57BAA522B4C4A860007FA1D /* TravelMagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57BAA512B4C4A860007FA1D /* TravelMagazineTableViewCell.swift */; };
+		A57BAA552B4C4E470007FA1D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A57BAA542B4C4E470007FA1D /* Kingfisher */; };
 		A596B3DC2B49537700F37489 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596B3DB2B49537700F37489 /* AppDelegate.swift */; };
 		A596B3DE2B49537700F37489 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596B3DD2B49537700F37489 /* SceneDelegate.swift */; };
 		A596B3E02B49537700F37489 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596B3DF2B49537700F37489 /* ViewController.swift */; };
@@ -21,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A57BAA4F2B4C46C00007FA1D /* TravelMagazineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMagazineTableViewController.swift; sourceTree = "<group>"; };
+		A57BAA512B4C4A860007FA1D /* TravelMagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMagazineTableViewCell.swift; sourceTree = "<group>"; };
 		A596B3D82B49537700F37489 /* SeSACTableViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACTableViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A596B3DB2B49537700F37489 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A596B3DD2B49537700F37489 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A57BAA552B4C4E470007FA1D /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,8 @@
 				A596B3F32B49A6C100F37489 /* SecondTableViewCell.swift */,
 				A596B3F72B49B87100F37489 /* ThirdTableViewController.swift */,
 				A596B3F92B49B89E00F37489 /* ThirdTableViewCell.swift */,
+				A57BAA4F2B4C46C00007FA1D /* TravelMagazineTableViewController.swift */,
+				A57BAA512B4C4A860007FA1D /* TravelMagazineTableViewCell.swift */,
 			);
 			path = SeSACTableViewController;
 			sourceTree = "<group>";
@@ -98,6 +106,9 @@
 			dependencies = (
 			);
 			name = SeSACTableViewController;
+			packageProductDependencies = (
+				A57BAA542B4C4E470007FA1D /* Kingfisher */,
+			);
 			productName = SeSACTableViewController;
 			productReference = A596B3D82B49537700F37489 /* SeSACTableViewController.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +137,9 @@
 				Base,
 			);
 			mainGroup = A596B3CF2B49537700F37489;
+			packageReferences = (
+				A57BAA532B4C4E470007FA1D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = A596B3D92B49537700F37489 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,7 +168,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A596B3F02B49A5DA00F37489 /* FirstTableViewController.swift in Sources */,
+				A57BAA522B4C4A860007FA1D /* TravelMagazineTableViewCell.swift in Sources */,
 				A596B3FA2B49B89E00F37489 /* ThirdTableViewCell.swift in Sources */,
+				A57BAA502B4C46C00007FA1D /* TravelMagazineTableViewController.swift in Sources */,
 				A596B3F82B49B87100F37489 /* ThirdTableViewController.swift in Sources */,
 				A596B3E02B49537700F37489 /* ViewController.swift in Sources */,
 				A596B3F22B49A5F100F37489 /* SecondTableViewController.swift in Sources */,
@@ -389,6 +405,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A57BAA532B4C4E470007FA1D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A57BAA542B4C4E470007FA1D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A57BAA532B4C4E470007FA1D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A596B3D02B49537700F37489 /* Project object */;
 }
