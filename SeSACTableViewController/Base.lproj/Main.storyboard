@@ -235,14 +235,14 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" id="g5y-Lg-TOw" customClass="SecondTableViewCell" customModule="SeSACTableViewController" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="393" height="37.333332061767578"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="37.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g5y-Lg-TOw" id="2Qa-km-vJY">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="37.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="37.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t48-tK-nbh">
-                                            <rect key="frame" x="20.000000000000004" y="7.9999999999999982" width="41.333333333333343" height="21.333333333333329"/>
+                                            <rect key="frame" x="20.000000000000004" y="8.0000000000000018" width="41.333333333333343" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -278,16 +278,15 @@
         <scene sceneID="gTD-H9-c7g">
             <objects>
                 <tableViewController id="w2D-Dc-rOr" customClass="ThirdTableViewController" customModule="SeSACTableViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="aPF-Sl-yEh">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="aPF-Sl-yEh">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="0Gs-cM-Nur">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9i-6a-KsI">
-                                    <rect key="frame" x="175.66666666666666" y="4" width="42" height="21"/>
+                                    <rect key="frame" x="175.66666666666666" y="8" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -329,7 +328,7 @@
                                 <constraint firstItem="E5J-IJ-qsc" firstAttribute="height" secondItem="0Gs-cM-Nur" secondAttribute="height" multiplier="0.5" id="JFl-Zm-9Ti"/>
                                 <constraint firstItem="t9i-6a-KsI" firstAttribute="centerX" secondItem="0Gs-cM-Nur" secondAttribute="centerX" id="NWX-WD-ai5"/>
                                 <constraint firstItem="E5J-IJ-qsc" firstAttribute="leading" secondItem="0Gs-cM-Nur" secondAttribute="leading" id="WJv-ZQ-RFv"/>
-                                <constraint firstItem="t9i-6a-KsI" firstAttribute="top" secondItem="0Gs-cM-Nur" secondAttribute="top" constant="4" id="bwI-NR-0Bo"/>
+                                <constraint firstItem="t9i-6a-KsI" firstAttribute="top" secondItem="0Gs-cM-Nur" secondAttribute="top" constant="8" id="bwI-NR-0Bo"/>
                                 <constraint firstItem="E5J-IJ-qsc" firstAttribute="width" secondItem="0Gs-cM-Nur" secondAttribute="width" id="kaJ-H8-0gr"/>
                             </constraints>
                         </view>
