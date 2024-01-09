@@ -62,14 +62,26 @@ class ThirdTableViewController: UITableViewController {
     }
     
     //체크 버튼 클릭
-    @IBAction func checkButtonClicked(_ sender: UIButton) {
+//    @IBAction func checkButtonClicked(_ sender: UIButton) {
+//        shoppingList[sender.tag].checkBool.toggle()
+//        savedShoppingList = shoppingList
+//        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+//    }
+    
+    @objc func checkButtonClicked(sender: UIButton) {
         shoppingList[sender.tag].checkBool.toggle()
         savedShoppingList = shoppingList
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
     }
     
     //스타 버튼 클릭
-    @IBAction func starButtonClicked(_ sender: UIButton) {
+//    @IBAction func starButtonClicked(_ sender: UIButton) {
+//        shoppingList[sender.tag].starBool.toggle()
+//        savedShoppingList = shoppingList
+//        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+//    }
+    
+    @objc func starButtonClicked(sender: UIButton) {
         shoppingList[sender.tag].starBool.toggle()
         savedShoppingList = shoppingList
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
@@ -102,7 +114,11 @@ class ThirdTableViewController: UITableViewController {
             
             cell.checkButton.setImage(UIImage(systemName: checkImage), for: .normal)
             cell.starButton.setImage(UIImage(systemName: starImage), for: .normal)
+            
+            cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
 
+            cell.starButton.addTarget(self, action: #selector(starButtonClicked), for: .touchUpInside)
+            
             return cell
         }
     }
