@@ -13,7 +13,25 @@ struct ShoppingList: Codable {
     var starBool: Bool
 }
 
-class ThirdTableViewController: UITableViewController {
+class ThirdTableViewController: UITableViewController, UIProtocol {
+    
+    func designMainView() {
+        view.tintColor = .black
+  
+        inputTextField.clipsToBounds = true
+        inputTextField.backgroundColor = .systemGray6
+        inputTextField.layer.cornerRadius = 15
+        inputTextField.layer.borderColor = UIColor.systemGray6.cgColor
+        inputTextField.layer.borderWidth = 1
+        inputTextField.placeholder = "무엇을 구매하실 건가요?"
+
+        titleTextLabel.text = "Shopping List"
+        titleTextLabel.font = .boldSystemFont(ofSize: 24)
+        
+        appendButton.layer.cornerRadius = 15
+        appendButton.setTitle("Add", for: .normal)
+        appendButton.backgroundColor = .systemGray5
+    }
 
     @IBOutlet var titleTextLabel: UILabel!
     @IBOutlet var inputTextField: UITextField!
@@ -41,86 +59,55 @@ class ThirdTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         designMainView()
-        
         shoppingList = savedShoppingList
     }
     
     @IBAction func appendButtonClicked(_ sender: UIButton) {
-        
-        if inputTextField.text != "" {
-            
+        if inputTextField.text == "" {
+            showAlert(title: "추가할 아이템을 입력하세요", message: .none)
+        } else {
             shoppingList.append(ShoppingList(itemName: inputTextField.text!, checkBool: false, starBool: false))
-                                
             savedShoppingList = shoppingList
-            
-            successAlert()
+            showAlert(title: "아이템 추가 성공", message: "언능 구매합시다")
             inputTextField.text = ""
             tableView.reloadData()
-        } else {
-            cancelAlert()
         }
     }
     
     //체크 버튼 클릭
-//    @IBAction func checkButtonClicked(_ sender: UIButton) {
-//        shoppingList[sender.tag].checkBool.toggle()
-//        savedShoppingList = shoppingList
-//        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
-//    }
-    
-    @objc func checkButtonClicked(sender: UIButton) {
+    @IBAction func checkButtonClicked(_ sender: UIButton) {
         shoppingList[sender.tag].checkBool.toggle()
         savedShoppingList = shoppingList
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
     }
     
-    //스타 버튼 클릭
-//    @IBAction func starButtonClicked(_ sender: UIButton) {
-//        shoppingList[sender.tag].starBool.toggle()
+//    @objc func checkButtonClicked(sender: UIButton) {
+//        shoppingList[sender.tag].checkBool.toggle()
 //        savedShoppingList = shoppingList
 //        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
 //    }
-    
-    @objc func starButtonClicked(sender: UIButton) {
+
+    //스타 버튼 클릭
+    @IBAction func starButtonClicked(_ sender: UIButton) {
         shoppingList[sender.tag].starBool.toggle()
         savedShoppingList = shoppingList
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
     }
     
+//    @objc func starButtonClicked(sender: UIButton) {
+//    shoppingList[sender.tag].starBool.toggle()
+//    savedShoppingList = shoppingList
+//    tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+//    }
+  
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shoppingList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ThirdTableViewCell", for: indexPath) as! ThirdTableViewCell
-        
-        switch shoppingList.count {
-        case 0:
-            return cell
-        default:
-            cell.cellView.backgroundColor = .systemGray6
-            cell.cellView.layer.cornerRadius = 15
-            cell.cellView.layer.borderColor = UIColor.white.cgColor
-            cell.cellView.layer.borderWidth = 1
-
-            cell.checkButton.tag = indexPath.row
-            cell.starButton.tag = indexPath.row
-        
-            cell.itemTextLabel.text = shoppingList[indexPath.row].itemName
-            
-            let checkImage = shoppingList[indexPath.row].checkBool ? "checkmark.square.fill" : "checkmark.square"
-            let starImage = shoppingList[indexPath.row].starBool ? "star.fill" : "star"
-            
-            cell.checkButton.setImage(UIImage(systemName: checkImage), for: .normal)
-            cell.starButton.setImage(UIImage(systemName: starImage), for: .normal)
-            
-            cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
-
-            cell.starButton.addTarget(self, action: #selector(starButtonClicked), for: .touchUpInside)
-            
-            return cell
-        }
+        cell.configureCell(shoppingList, indexPath: indexPath)
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -140,35 +127,8 @@ class ThirdTableViewController: UITableViewController {
         }
     }
     
-    func successAlert() {
-        let alert = UIAlertController(title: "추가 성공", message: .none, preferredStyle: .alert)
-        let alertOKButton = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(alertOKButton)
-        present(alert, animated: true)
-    }
-    
-    func cancelAlert() {
-        let alert = UIAlertController(title: "추가할 아이템을 입력하세요.", message: .none, preferredStyle: .alert)
-        let alertCancleButton = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(alertCancleButton)
-        present(alert, animated: true)
-    }
-    
-    func designMainView() {
-        view.tintColor = .black
-  
-        inputTextField.clipsToBounds = true
-        inputTextField.backgroundColor = .systemGray6
-        inputTextField.layer.cornerRadius = 15
-        inputTextField.layer.borderColor = UIColor.systemGray6.cgColor
-        inputTextField.layer.borderWidth = 1
-        inputTextField.placeholder = "무엇을 구매하실 건가요?"
 
-        titleTextLabel.text = "Shopping List"
-        titleTextLabel.font = .boldSystemFont(ofSize: 24)
-        
-        appendButton.layer.cornerRadius = 15
-        appendButton.setTitle("Add", for: .normal)
-        appendButton.backgroundColor = .systemGray5
-    }
 }
+
+
+

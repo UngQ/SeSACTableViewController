@@ -236,14 +236,14 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" id="g5y-Lg-TOw" customClass="SecondTableViewCell" customModule="SeSACTableViewController" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="393" height="37.333332061767578"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="37"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g5y-Lg-TOw" id="2Qa-km-vJY">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="37.333332061767578"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="37"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t48-tK-nbh">
-                                            <rect key="frame" x="19.999999999999996" y="7.9999999999999982" width="41.666666666666657" height="21.333333333333329"/>
+                                            <rect key="frame" x="19.999999999999996" y="8" width="41.666666666666657" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -705,8 +705,10 @@
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
-                                    <segment title=""/>
                                 </segments>
+                                <connections>
+                                    <action selector="changedSegments:" destination="fJh-lN-gs6" eventType="valueChanged" id="ZTt-yw-IRR"/>
+                                </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BsM-2k-W23">
                                 <rect key="frame" x="0.0" y="139" width="393" height="679"/>

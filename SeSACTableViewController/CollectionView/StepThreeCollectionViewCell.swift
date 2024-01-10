@@ -36,4 +36,11 @@ class StepThreeCollectionViewCell: UICollectionViewCell {
         cityExplainLabel.textColor = .gray
     }
     
+    func configureCell(cityInfo: [City], indexPath: IndexPath) {
+        let url = URL(string: cityInfo[indexPath.item].city_image)
+        cityImageView.kf.setImage(with: url)
+        cityNameLabel.text = "\(cityInfo[indexPath.item].city_name) | \(cityInfo[indexPath.item].city_english_name)"
+        cityExplainLabel.text = cityInfo[indexPath.item].city_explain
+    }
+    
 }

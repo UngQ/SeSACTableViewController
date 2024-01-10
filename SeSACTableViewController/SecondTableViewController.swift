@@ -35,16 +35,6 @@ class SecondTableViewController: UITableViewController {
     //1. 행 갯수 설정
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        if section == 0 {
-//            return cellList[section].count
-//        } else if section == 1 {
-//            return cellList[section].count
-//        } else if section == 2 {
-//            return cellList[section].count
-//        } else {
-//            return 0
-//        }
-        
         return cellList[section].count
     }
 
@@ -52,18 +42,7 @@ class SecondTableViewController: UITableViewController {
     //2. 셀 디자인
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell")! as! SecondTableViewCell
-//        
-//        if indexPath.section == 0 {
-//            cell.titleLabel.text = cellList[indexPath.section][indexPath.row]
-//        } else if indexPath.section == 1 {
-//            cell.titleLabel.text = cellList[indexPath.section][indexPath.row]
-//        }
-        //            if indexPath.row == 0 {
-        //                cell.titleLabel.text = cellList[0][0]
-        //            } else if indexPath.row == 1 {
-        //                cell.titleLabel.text = cellList[0][1]
-        //            }
-        
+
         cell.titleLabel.text = cellList[indexPath.section][indexPath.row]
         cell.titleLabel.font = .systemFont(ofSize: 14)
 
