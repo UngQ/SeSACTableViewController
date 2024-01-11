@@ -1,5 +1,5 @@
 //
-//  StepThreeViewController.swift
+//  PopularCityViewController.swift
 //  SeSACTableViewController
 //
 //  Created by ungq on 1/9/24.
@@ -7,15 +7,10 @@
 
 import UIKit
 
-enum TravelType: Int {
-    case 모두
-    case 국내
-    case 해외
-}
 
-class StepThreeViewController: UIViewController, UIProtocol {
+
+class PopularCityViewController: UIViewController {
     
-    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var domesticTravelSegmentedControl: UISegmentedControl!
     @IBOutlet var cityCollectionView: UICollectionView!
     
@@ -24,7 +19,7 @@ class StepThreeViewController: UIViewController, UIProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         filteredCityInfo = cityInfo
         designMainView()
     }
@@ -34,20 +29,27 @@ class StepThreeViewController: UIViewController, UIProtocol {
         cityCollectionView.reloadData()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredCityInfo.count
+    func filterCityInfo(index: Int) {
+        guard let travelType = TravelType(rawValue: index) else { return }
+        switch travelType {
+        case .모두:
+            filteredCityInfo = cityInfo
+        case .국내:
+            filteredCityInfo = cityInfo.filter{ $0.domestic_travel }
+        case .해외:
+            filteredCityInfo = cityInfo.filter{ !$0.domestic_travel }
+        }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StepThreeCollectionViewCell", for: indexPath) as! StepThreeCollectionViewCell
-        cell.configureCell(cityInfo: filteredCityInfo, indexPath: indexPath)
-        return cell
-    }
+}
+
+
+extension PopularCityViewController: UIProtocol {
     
     func designMainView() {
+        navigationItem.title = "인기 도시"
         
-        let xib = UINib(nibName: "StepThreeCollectionViewCell", bundle: nil)
-        cityCollectionView.register(xib, forCellWithReuseIdentifier: "StepThreeCollectionViewCell")
+        let xib = UINib(nibName: "PopularCityCollectionViewCell", bundle: nil)
+        cityCollectionView.register(xib, forCellWithReuseIdentifier: "PopularCityCollectionViewCell")
         
         cityCollectionView.dataSource = self
         cityCollectionView.delegate = self
@@ -64,24 +66,25 @@ class StepThreeViewController: UIViewController, UIProtocol {
         
         cityCollectionView.collectionViewLayout = layout
         
-        titleLabel.text = "인기 도시"
-        titleLabel.font = .boldSystemFont(ofSize: 20)
-        
         domesticTravelSegmentedControl.setTitle("모두", forSegmentAt: 0)
         domesticTravelSegmentedControl.setTitle("국내", forSegmentAt: 1)
         domesticTravelSegmentedControl.insertSegment(withTitle: "해외", at: 2, animated: false)
-        
+    }
+}
+
+extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filteredCityInfo.count
     }
     
-    func filterCityInfo(index: Int) {
-        guard let travelType = TravelType(rawValue: index) else { return }
-        switch travelType {
-        case .모두:
-            filteredCityInfo = cityInfo
-        case .국내:
-            filteredCityInfo = cityInfo.filter{ $0.domestic_travel }
-        case .해외:
-            filteredCityInfo = cityInfo.filter{ !$0.domestic_travel }
-        }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularCityCollectionViewCell", for: indexPath) as! PopularCityCollectionViewCell
+        cell.configureCell(cityInfo: filteredCityInfo, indexPath: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "DetailCityInfoViewController") as! DetailCityInfoViewController
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

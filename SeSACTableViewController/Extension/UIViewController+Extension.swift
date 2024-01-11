@@ -16,8 +16,3 @@ extension UIViewController {
     }
 }
 
-
-extension StepThreeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    
-}

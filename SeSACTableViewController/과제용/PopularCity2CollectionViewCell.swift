@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PopularCityCollectionViewCell: UICollectionViewCell {
+class PopularCity2CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var cityImageView: UIImageView!
     @IBOutlet var cityNameLabel: UILabel!

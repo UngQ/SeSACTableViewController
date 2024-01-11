@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 
-class PopularCityCollectionViewController: UICollectionViewController {
+class PopularCity2CollectionViewController: UICollectionViewController {
     
     let cityInfo = CityInfo().city
 
@@ -38,7 +38,7 @@ class PopularCityCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularCityCollectionViewCell", for: indexPath) as! PopularCityCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularCity2CollectionViewCell", for: indexPath) as! PopularCity2CollectionViewCell
     
         let url = URL(string: cityInfo[indexPath.item].city_image)
         

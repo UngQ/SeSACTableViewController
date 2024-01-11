@@ -8,14 +8,12 @@
 import UIKit
 
 
-class StepThreeCollectionViewCell: UICollectionViewCell {
+class PopularCityCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var cityImageView: UIImageView!
-    
     @IBOutlet var cityNameLabel: UILabel!
-    
     @IBOutlet var cityExplainLabel: UILabel!
-    
+ 
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,10 +28,12 @@ class StepThreeCollectionViewCell: UICollectionViewCell {
         cityNameLabel.font = .boldSystemFont(ofSize: 16)
         
         cityExplainLabel.textAlignment = .center
-        cityExplainLabel.numberOfLines = 2
+        cityExplainLabel.numberOfLines = 0
 
         cityExplainLabel.font = .systemFont(ofSize: 12)
         cityExplainLabel.textColor = .gray
+        
+        
     }
     
     func configureCell(cityInfo: [City], indexPath: IndexPath) {

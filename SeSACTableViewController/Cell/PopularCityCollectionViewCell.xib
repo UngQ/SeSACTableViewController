@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StepThreeCollectionViewCell" id="gTV-IL-0wX" customClass="StepThreeCollectionViewCell" customModule="SeSACTableViewController" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PopularCityCollectionViewCell" id="gTV-IL-0wX" customClass="PopularCityCollectionViewCell" customModule="SeSACTableViewController" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="328" height="472"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -36,10 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEb-2Y-UxW">
-                                <rect key="frame" x="0.0" y="366" width="328" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="a8Z-qh-mE9"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="366" width="328" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,6 +44,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UEb-2Y-UxW" secondAttribute="bottom" id="21o-dQ-Qk1"/>
                             <constraint firstItem="U5S-zo-XtR" firstAttribute="leading" secondItem="SnQ-7f-Eix" secondAttribute="leading" id="2Ah-9z-DkV"/>
                             <constraint firstItem="UEb-2Y-UxW" firstAttribute="top" secondItem="U5S-zo-XtR" secondAttribute="bottom" constant="2" id="BNB-et-0Rt"/>
                             <constraint firstAttribute="trailing" secondItem="U5S-zo-XtR" secondAttribute="trailing" id="Il7-EG-IWz"/>
