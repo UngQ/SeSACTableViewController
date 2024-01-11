@@ -75,30 +75,30 @@ class ThirdTableViewController: UITableViewController, UIProtocol {
     }
     
     //체크 버튼 클릭
-    @IBAction func checkButtonClicked(_ sender: UIButton) {
-        shoppingList[sender.tag].checkBool.toggle()
-        savedShoppingList = shoppingList
-        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
-    }
-    
-//    @objc func checkButtonClicked(sender: UIButton) {
+//    @IBAction func checkButtonClicked(_ sender: UIButton) {
 //        shoppingList[sender.tag].checkBool.toggle()
 //        savedShoppingList = shoppingList
 //        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
 //    }
-
-    //스타 버튼 클릭
-    @IBAction func starButtonClicked(_ sender: UIButton) {
-        shoppingList[sender.tag].starBool.toggle()
+//    
+    @objc func checkButtonClicked(sender: UIButton) {
+        shoppingList[sender.tag].checkBool.toggle()
         savedShoppingList = shoppingList
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
     }
-    
-//    @objc func starButtonClicked(sender: UIButton) {
-//    shoppingList[sender.tag].starBool.toggle()
-//    savedShoppingList = shoppingList
-//    tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+
+    //스타 버튼 클릭
+//    @IBAction func starButtonClicked(_ sender: UIButton) {
+//        shoppingList[sender.tag].starBool.toggle()
+//        savedShoppingList = shoppingList
+//        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
 //    }
+    
+    @objc func starButtonClicked(sender: UIButton) {
+    shoppingList[sender.tag].starBool.toggle()
+    savedShoppingList = shoppingList
+    tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+    }
   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shoppingList.count
@@ -107,6 +107,11 @@ class ThirdTableViewController: UITableViewController, UIProtocol {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ThirdTableViewCell", for: indexPath) as! ThirdTableViewCell
         cell.configureCell(shoppingList, indexPath: indexPath)
+        
+        cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
+
+        cell.starButton.addTarget(self, action: #selector(starButtonClicked), for: .touchUpInside)
+
         return cell
     }
 

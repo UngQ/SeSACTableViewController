@@ -37,6 +37,8 @@ class ThirdTableViewCell: UITableViewCell {
         let starImage = shoppingList[indexPath.row].starBool ? "star.fill" : "star"
         checkButton.setImage(UIImage(systemName: checkImage), for: .normal)
         starButton.setImage(UIImage(systemName: starImage), for: .normal)
+        
+        
     }
     
 }

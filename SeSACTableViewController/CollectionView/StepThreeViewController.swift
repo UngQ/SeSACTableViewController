@@ -82,7 +82,6 @@ class StepThreeViewController: UIViewController, UIProtocol {
             filteredCityInfo = cityInfo.filter{ $0.domestic_travel }
         case .해외:
             filteredCityInfo = cityInfo.filter{ !$0.domestic_travel }
-
         }
     }
 }

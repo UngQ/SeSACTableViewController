@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fJh-lN-gs6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w2D-Dc-rOr">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -236,14 +236,14 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" id="g5y-Lg-TOw" customClass="SecondTableViewCell" customModule="SeSACTableViewController" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="393" height="37"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="37.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g5y-Lg-TOw" id="2Qa-km-vJY">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="37"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="37.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t48-tK-nbh">
-                                            <rect key="frame" x="19.999999999999996" y="8" width="41.666666666666657" height="21"/>
+                                            <rect key="frame" x="19.999999999999996" y="8.0000000000000018" width="41.666666666666657" height="21.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -342,35 +342,29 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRm-mT-wJG">
-                                            <rect key="frame" x="4" y="0.0" width="385" height="75"/>
+                                            <rect key="frame" x="4" y="1" width="385" height="74"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0B-sJ-Y0n">
-                                                    <rect key="frame" x="79" y="4" width="227" height="67"/>
+                                                    <rect key="frame" x="78" y="4" width="229" height="66"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zni-hi-GMb">
-                                                    <rect key="frame" x="310" y="0.0" width="75" height="75"/>
+                                                    <rect key="frame" x="311" y="0.0" width="74" height="74"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="zni-hi-GMb" secondAttribute="height" id="P7j-Xo-BvH"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="starButtonClicked:" destination="w2D-Dc-rOr" eventType="touchUpInside" id="rmG-OK-EpV"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMB-CH-cZq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="74" height="74"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tMB-CH-cZq" secondAttribute="height" multiplier="1:1" id="hdd-NX-BH9"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="checkmark.square" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="checkButtonClicked:" destination="w2D-Dc-rOr" eventType="touchUpInside" id="zCV-Lk-LEb"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -391,7 +385,7 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="WRm-mT-wJG" secondAttribute="bottom" constant="1" id="0nt-PS-cpp"/>
                                         <constraint firstItem="WRm-mT-wJG" firstAttribute="leading" secondItem="7Bj-ik-Dl6" secondAttribute="leading" constant="4" id="4rp-KB-CLz"/>
-                                        <constraint firstItem="WRm-mT-wJG" firstAttribute="top" secondItem="7Bj-ik-Dl6" secondAttribute="top" id="g2Q-lS-jYs"/>
+                                        <constraint firstItem="WRm-mT-wJG" firstAttribute="top" secondItem="7Bj-ik-Dl6" secondAttribute="top" constant="1" id="g2Q-lS-jYs"/>
                                         <constraint firstAttribute="trailing" secondItem="WRm-mT-wJG" secondAttribute="trailing" constant="4" id="wUT-z4-EaK"/>
                                     </constraints>
                                 </tableViewCellContentView>
