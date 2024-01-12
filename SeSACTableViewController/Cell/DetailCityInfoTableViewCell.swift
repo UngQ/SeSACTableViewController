@@ -15,6 +15,7 @@ class DetailCityInfoTableViewCell: UITableViewCell {
     @IBOutlet var starLabel: UILabel!
     @IBOutlet var travelGradeSaveLabel: UILabel!
     
+    @IBOutlet var savedButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

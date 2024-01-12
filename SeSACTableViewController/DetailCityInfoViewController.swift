@@ -9,7 +9,7 @@ import UIKit
 
 class DetailCityInfoViewController: UIViewController {
 
-    let travelInfoList = TravelInfo().travel
+    var travelInfoList = TravelInfo().travel
     
     @IBOutlet var detailCityInfoTableView: UITableView!
     
@@ -65,6 +65,8 @@ extension DetailCityInfoViewController: UITableViewDelegate, UITableViewDataSour
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCityInfoTableViewCell", for: indexPath) as! DetailCityInfoTableViewCell
             
+            cell.savedButton.tag = indexPath.row
+            
             let gradeStar: String
             switch travelInfoList[indexPath.row].grade! {
             case 0...1: gradeStar = "★☆☆☆☆"
@@ -97,8 +99,28 @@ extension DetailCityInfoViewController: UITableViewDelegate, UITableViewDataSour
             cell.travelImageView.contentMode = .scaleAspectFill
             cell.travelImageView.layer.cornerRadius = 10
             
+            let image = travelInfoList[indexPath.row].like! ? "heart" : "heart.fill"
+            cell.savedButton.setImage(UIImage(systemName: image), for: .normal)
+            cell.savedButton.sizeToFit()
+            cell.savedButton.tintColor = .white
+
+            
+            cell.savedButton.layer.opacity = 0.8
+
+            cell.savedButton.addTarget(self, action: #selector(savedButtonClicked), for: .touchUpInside)
+            
             return cell
         }
+        
+        
+        
+
+        
+    }
+    
+    @objc func savedButtonClicked(sender: UIButton) {
+        travelInfoList[sender.tag].like?.toggle()
+        detailCityInfoTableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

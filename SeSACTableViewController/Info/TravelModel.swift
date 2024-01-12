@@ -10,9 +10,9 @@ struct Travel {
     let title: String
     let description: String?
     let travel_image: String?
-    let grade: Double?
-    let save: Int?
-    let like: Bool?
+    var grade: Double?
+    var save: Int?
+    var like: Bool?
     let ad: Bool
 }
 
