@@ -87,6 +87,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H1r-Il-8dY"/>
+                        <color key="backgroundColor" systemColor="tableBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="H1r-Il-8dY" firstAttribute="bottom" secondItem="EKp-Lf-PcS" secondAttribute="bottom" id="JRJ-HI-NPQ"/>
                             <constraint firstItem="EKp-Lf-PcS" firstAttribute="leading" secondItem="H1r-Il-8dY" secondAttribute="leading" id="azz-aT-cpl"/>
@@ -100,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9QN-B9-xCE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="-11"/>
+            <point key="canvasLocation" x="1320" y="-11"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gA8-Kj-sDe">
@@ -181,19 +182,22 @@
     <color key="tintColor" systemColor="secondaryLabelColor"/>
     <resources>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tableBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
