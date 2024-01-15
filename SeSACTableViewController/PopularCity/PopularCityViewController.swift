@@ -16,7 +16,11 @@ class PopularCityViewController: UIViewController {
     @IBOutlet var cityCollectionView: UICollectionView!
     
     let originalList = CityInfo().city
-    var list: [City] = CityInfo().city
+    var list: [City] = CityInfo().city {
+        didSet {
+            cityCollectionView.reloadData()
+        }
+    }
     var domesticList: [City] = []
     var nonDomesticList: [City] = []
     
@@ -51,7 +55,6 @@ class PopularCityViewController: UIViewController {
         }
         
         searchBar.text = ""
-        cityCollectionView.reloadData()
     }
     
     
@@ -102,13 +105,11 @@ extension PopularCityViewController: UISearchBarDelegate {
         }
         
         list = filteredList
-        cityCollectionView.reloadData()
     }
     
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         changedSegments(searchBar)
-        cityCollectionView.reloadData()
     }
     
     
@@ -155,6 +156,9 @@ extension PopularCityViewController: UIProtocol {
     }
     
 }
+
+
+
 
 extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
