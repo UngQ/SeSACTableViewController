@@ -11,9 +11,6 @@ import Kingfisher
 class TravelMagazineTableViewController: UITableViewController, UIProtocol {
     
     func designMainView() {
-        titleLabel.text = "SeSAC TRAVEL"
-        titleLabel.font = .boldSystemFont(ofSize: 20)
-        titleLabel.textAlignment = .center
         tableView.separatorStyle = .none
     }
     
@@ -22,9 +19,21 @@ class TravelMagazineTableViewController: UITableViewController, UIProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Travel Magazine"
+        
         designMainView()
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        
     }
 
+}
+
+
+extension TravelMagazineTableViewController {
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return magazineInfo.magazine.count
     }
@@ -34,10 +43,17 @@ class TravelMagazineTableViewController: UITableViewController, UIProtocol {
         cell.connectData(magazineInfo: magazineInfo, indexPath: indexPath)
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 480
-    }
-    
 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
+        let vc = storyboard?.instantiateViewController(identifier: "webViewController") as! webViewController
+        
+        vc.stringURL = magazineInfo.magazine[indexPath.row].link
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }

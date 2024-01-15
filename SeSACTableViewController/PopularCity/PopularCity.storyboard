@@ -17,21 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mnm-ZK-Hxy">
-                                <rect key="frame" x="20" y="103" width="353" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="4gM-aY-JeT"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                                <connections>
-                                    <action selector="changedSegments:" destination="L15-Gf-sEa" eventType="valueChanged" id="Ow0-Gk-BcC"/>
-                                </connections>
-                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cVi-Ec-7I6">
-                                <rect key="frame" x="0.0" y="127" width="393" height="691"/>
+                                <rect key="frame" x="0.0" y="183" width="393" height="635"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bUp-jG-Gqf">
                                     <size key="itemSize" width="128" height="128"/>
@@ -50,6 +37,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gVS-wi-ViT">
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="L15-Gf-sEa" id="osl-th-j5N"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mnm-ZK-Hxy">
+                                <rect key="frame" x="20" y="159" width="353" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="4gM-aY-JeT"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changedSegments:" destination="L15-Gf-sEa" eventType="valueChanged" id="Ow0-Gk-BcC"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GCx-ZZ-XXz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -59,14 +66,18 @@
                             <constraint firstItem="GCx-ZZ-XXz" firstAttribute="bottom" secondItem="cVi-Ec-7I6" secondAttribute="bottom" id="Fl6-BH-x3v"/>
                             <constraint firstItem="GCx-ZZ-XXz" firstAttribute="trailing" secondItem="mnm-ZK-Hxy" secondAttribute="trailing" constant="20" id="IQw-Il-Zum"/>
                             <constraint firstItem="cVi-Ec-7I6" firstAttribute="top" secondItem="mnm-ZK-Hxy" secondAttribute="bottom" id="VaK-U7-Uvq"/>
-                            <constraint firstItem="mnm-ZK-Hxy" firstAttribute="top" secondItem="GCx-ZZ-XXz" secondAttribute="top" id="WNj-95-68B"/>
                             <constraint firstItem="GCx-ZZ-XXz" firstAttribute="trailing" secondItem="cVi-Ec-7I6" secondAttribute="trailing" id="fJY-Ra-7UO"/>
+                            <constraint firstItem="gVS-wi-ViT" firstAttribute="leading" secondItem="GCx-ZZ-XXz" secondAttribute="leading" id="gJm-xS-LB7"/>
+                            <constraint firstAttribute="trailing" secondItem="gVS-wi-ViT" secondAttribute="trailing" id="gNZ-UG-1q5"/>
+                            <constraint firstItem="mnm-ZK-Hxy" firstAttribute="top" secondItem="gVS-wi-ViT" secondAttribute="bottom" id="goq-VN-S0T"/>
+                            <constraint firstItem="gVS-wi-ViT" firstAttribute="top" secondItem="GCx-ZZ-XXz" secondAttribute="top" id="wu1-bK-Sqy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rYR-Hg-hgF"/>
                     <connections>
                         <outlet property="cityCollectionView" destination="cVi-Ec-7I6" id="OWl-Xa-yjY"/>
                         <outlet property="domesticTravelSegmentedControl" destination="mnm-ZK-Hxy" id="ode-i4-eRE"/>
+                        <outlet property="searchBar" destination="gVS-wi-ViT" id="hEq-7s-JOj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NNm-ff-7ec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -182,19 +193,19 @@
     <color key="tintColor" systemColor="secondaryLabelColor"/>
     <resources>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

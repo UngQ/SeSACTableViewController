@@ -11,6 +11,7 @@ class TravelMagazineTableViewCell: UITableViewCell {
 
     @IBOutlet var mainImageView: UIImageView!
     
+
     @IBOutlet var mainTitle: UILabel!
     @IBOutlet var subTitle: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -18,20 +19,26 @@ class TravelMagazineTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundColor = .white
-        
+        backgroundColor = .clear
+
         mainImageView.contentMode = .scaleAspectFill
         mainImageView.layer.cornerRadius = 15
+        mainImageView.clipsToBounds = true
+
         
-        mainTitle.font = .boldSystemFont(ofSize: 24)
-        mainTitle.numberOfLines = 2
+        mainTitle.font = .boldSystemFont(ofSize: 20)
+        mainTitle.numberOfLines = 0
+
+        subTitle.font = .systemFont(ofSize: 14)
+        subTitle.textColor = .systemGray
+
         
-        subTitle.font = .systemFont(ofSize: 16)
-        subTitle.textColor = .lightGray
         
-        dateLabel.textAlignment = .right
-        
-        selectionStyle = .none
+        dateLabel.font = .systemFont(ofSize: 12)
+        dateLabel.textColor = .systemGray2
+
+     
+
     }
     
     func connectData(magazineInfo: MagazineInfo, indexPath: IndexPath) {
