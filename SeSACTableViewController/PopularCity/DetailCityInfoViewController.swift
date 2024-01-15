@@ -16,30 +16,39 @@ class DetailCityInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureViewController()
+    }
+}
+
+//내가 만든 기능
+extension DetailCityInfoViewController {
+    func configureViewController() {
         detailCityInfoTableView.delegate = self
         detailCityInfoTableView.dataSource = self
         
         navigationItem.title = "도시 상세 정보"
         detailCityInfoTableView.rowHeight = UITableView.automaticDimension
+        
+        let xib = UINib(nibName: DetailCityInfoTableViewCell.identifier, bundle: nil)
+        detailCityInfoTableView.register(xib, forCellReuseIdentifier: DetailCityInfoTableViewCell.identifier)
+        
+        let xib2 = UINib(nibName: ADTableViewCell.identifier, bundle: nil)
+        detailCityInfoTableView.register(xib2, forCellReuseIdentifier: ADTableViewCell.identifier)
     }
 }
 
+//테이블뷰 관련 기능
 extension DetailCityInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         travelInfoList.count
     }
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let xib = UINib(nibName: "DetailCityInfoTableViewCell", bundle: nil)
-        tableView.register(xib, forCellReuseIdentifier: "DetailCityInfoTableViewCell")
-        
-        let xib2 = UINib(nibName: "ADTableViewCell", bundle: nil)
-        tableView.register(xib2, forCellReuseIdentifier: "ADTableViewCell")
+
         
         if travelInfoList[indexPath.row].ad {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ADTableViewCell", for: indexPath) as! ADTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ADTableViewCell.identifier, for: indexPath) as! ADTableViewCell
 
             cell.backView.layer.cornerRadius = 10
             cell.backView.backgroundColor = UIColor(red: .random(in: 0...1),
@@ -62,8 +71,7 @@ extension DetailCityInfoViewController: UITableViewDelegate, UITableViewDataSour
             return cell
             
         } else {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCityInfoTableViewCell", for: indexPath) as! DetailCityInfoTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: DetailCityInfoTableViewCell.identifier, for: indexPath) as! DetailCityInfoTableViewCell
             
             cell.savedButton.tag = indexPath.row
             
@@ -111,11 +119,6 @@ extension DetailCityInfoViewController: UITableViewDelegate, UITableViewDataSour
             
             return cell
         }
-        
-        
-        
-
-        
     }
     
     @objc func savedButtonClicked(sender: UIButton) {
@@ -125,11 +128,11 @@ extension DetailCityInfoViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if travelInfoList[indexPath.row].ad {
-            let viewController = storyboard?.instantiateViewController(identifier: "ADViewController") as! ADViewController
+            let viewController = storyboard?.instantiateViewController(identifier: ADViewController.identifier) as! ADViewController
             viewController.modalPresentationStyle = .fullScreen
             present(viewController, animated: true)
         } else {
-            let viewController = storyboard?.instantiateViewController(identifier: "TravelViewController") as! TravelViewController
+            let viewController = storyboard?.instantiateViewController(identifier: TravelViewController.identifier) as! TravelViewController
             navigationController?.pushViewController(viewController, animated: true)
         }
     }

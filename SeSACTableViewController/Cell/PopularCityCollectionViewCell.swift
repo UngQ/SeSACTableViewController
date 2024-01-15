@@ -17,7 +17,9 @@ class PopularCityCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+    }
+    
+    func configureCell(cityInfo: [City], indexPath: IndexPath) {
         cityImageView.contentMode = .scaleAspectFill
         
         let spacing: CGFloat = 24
@@ -33,10 +35,6 @@ class PopularCityCollectionViewCell: UICollectionViewCell {
         cityExplainLabel.font = .systemFont(ofSize: 12)
         cityExplainLabel.textColor = .gray
         
-        
-    }
-    
-    func configureCell(cityInfo: [City], indexPath: IndexPath) {
         let url = URL(string: cityInfo[indexPath.item].city_image)
         cityImageView.kf.setImage(with: url)
         cityNameLabel.text = "\(cityInfo[indexPath.item].city_name) | \(cityInfo[indexPath.item].city_english_name)"

@@ -28,20 +28,8 @@ class PopularCityViewController: UIViewController {
         super.viewDidLoad()
     
         domesticFilteredList()
-        
-        designMainView()
+        configureViewController()
     }
-    
-    func domesticFilteredList() {
-        for item in originalList {
-            if item.domestic_travel == true {
-                domesticList.append(item)
-            } else {
-                nonDomesticList.append(item)
-            }
-        }
-    }
-    
     
     @IBAction func changedSegments(_ sender: Any) {
 
@@ -56,75 +44,17 @@ class PopularCityViewController: UIViewController {
         
         searchBar.text = ""
     }
-    
-    
-    func textFilteredList(list: [City], searchText: String) -> [City] {
-        var filteredList: [City] = []
-        var capitalizedSearchText: String = ""
-        
-        for item in list {
-            capitalizedSearchText = searchText.capitalized
-            if item.city_name.contains(capitalizedSearchText) ||
-                item.city_english_name.contains(capitalizedSearchText) ||
-                item.city_explain.contains(capitalizedSearchText) {
-                filteredList.append(item)
-            }
-        }
-        return filteredList
-    }
 }
 
 
-
-extension PopularCityViewController: UISearchBarDelegate {
+//내가 만든 기능
+extension PopularCityViewController {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        var filteredList: [City] = []
-        
-        trimmingTextField(textfield: searchBar.searchTextField)
-        
-        switch domesticTravelSegmentedControl.selectedSegmentIndex {
-        case 1:
-            if searchText == "" {
-                filteredList = domesticList
-            } else {
-                filteredList = textFilteredList(list: domesticList, searchText: searchText)
-            }
-        case 2:
-            if searchText == "" {
-                filteredList = nonDomesticList
-            } else {
-                filteredList = textFilteredList(list: nonDomesticList, searchText: searchText)
-            }
-        default:
-            if searchText == "" {
-                filteredList = originalList
-            } else {
-                filteredList = textFilteredList(list: originalList, searchText: searchText)
-            }
-        }
-        
-        list = filteredList
-    }
-    
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        changedSegments(searchBar)
-    }
-    
-    
-
-}
-
-
-
-extension PopularCityViewController: UIProtocol {
-    
-    func designMainView() {
+    func configureViewController() {
         navigationItem.title = "인기 도시"
         
-        let xib = UINib(nibName: "PopularCityCollectionViewCell", bundle: nil)
-        cityCollectionView.register(xib, forCellWithReuseIdentifier: "PopularCityCollectionViewCell")
+        let xib = UINib(nibName: PopularCityCollectionViewCell.identifier, bundle: nil)
+        cityCollectionView.register(xib, forCellWithReuseIdentifier: PopularCityCollectionViewCell.identifier)
         
         cityCollectionView.dataSource = self
         cityCollectionView.delegate = self
@@ -155,24 +85,83 @@ extension PopularCityViewController: UIProtocol {
         textfield.text = textfield.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
+    func domesticFilteredList() {
+        for item in originalList {
+            if item.domestic_travel == true {
+                domesticList.append(item)
+            } else {
+                nonDomesticList.append(item)
+            }
+        }
+    }
+    
+    func textFilteredList(list: [City], searchText: String) -> [City] {
+        var filteredList: [City] = []
+        var capitalizedSearchText: String = ""
+        
+        for item in list {
+            capitalizedSearchText = searchText.capitalized
+            if item.city_name.contains(capitalizedSearchText) ||
+                item.city_english_name.contains(capitalizedSearchText) ||
+                item.city_explain.contains(capitalizedSearchText) {
+                filteredList.append(item)
+            }
+        }
+        return filteredList
+    }
 }
 
 
+//서치바 관련
+extension PopularCityViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        var filteredList: [City] = []
+        
+        trimmingTextField(textfield: searchBar.searchTextField)
+        
+        switch domesticTravelSegmentedControl.selectedSegmentIndex {
+        case 1:
+            if searchText == "" {
+                filteredList = domesticList
+            } else {
+                filteredList = textFilteredList(list: domesticList, searchText: searchText)
+            }
+        case 2:
+            if searchText == "" {
+                filteredList = nonDomesticList
+            } else {
+                filteredList = textFilteredList(list: nonDomesticList, searchText: searchText)
+            }
+        default:
+            if searchText == "" {
+                filteredList = originalList
+            } else {
+                filteredList = textFilteredList(list: originalList, searchText: searchText)
+            }
+        }
+        list = filteredList
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        changedSegments(searchBar)
+    }
+}
 
-
+//콜렉션뷰 관련
 extension PopularCityViewController: UICollectionViewDelegate, UICollectionViewDataSource  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularCityCollectionViewCell", for: indexPath) as! PopularCityCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularCityCollectionViewCell.identifier, for: indexPath) as! PopularCityCollectionViewCell
         cell.configureCell(cityInfo: list, indexPath: indexPath)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "DetailCityInfoViewController") as! DetailCityInfoViewController
+        let viewController = storyboard?.instantiateViewController(withIdentifier: DetailCityInfoViewController.identifier) as! DetailCityInfoViewController
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -13,7 +13,7 @@ struct ShoppingList: Codable {
     var starBool: Bool
 }
 
-class ThirdTableViewController: UITableViewController, UIProtocol {
+class ThirdTableViewController: UITableViewController {
     
     func designMainView() {
         view.tintColor = .black

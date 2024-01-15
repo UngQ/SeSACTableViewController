@@ -11,11 +11,9 @@ class ADViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func backButtonClicked(_ sender: UIButton) {
         dismiss(animated: true)
     }
-    
 }

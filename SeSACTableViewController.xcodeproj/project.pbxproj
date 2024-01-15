@@ -43,7 +43,7 @@
 		A596B3F42B49A6C100F37489 /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596B3F32B49A6C100F37489 /* SecondTableViewCell.swift */; };
 		A596B3F82B49B87100F37489 /* ThirdTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596B3F72B49B87100F37489 /* ThirdTableViewController.swift */; };
 		A596B3FA2B49B89E00F37489 /* ThirdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596B3F92B49B89E00F37489 /* ThirdTableViewCell.swift */; };
-		A5BD40B12B4ED353006D9B0C /* UIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BD40B02B4ED353006D9B0C /* UIProtocol.swift */; };
+		A5BD40B12B4ED353006D9B0C /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BD40B02B4ED353006D9B0C /* Protocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,7 +84,7 @@
 		A596B3F32B49A6C100F37489 /* SecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
 		A596B3F72B49B87100F37489 /* ThirdTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewController.swift; sourceTree = "<group>"; };
 		A596B3F92B49B89E00F37489 /* ThirdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewCell.swift; sourceTree = "<group>"; };
-		A5BD40B02B4ED353006D9B0C /* UIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProtocol.swift; sourceTree = "<group>"; };
+		A5BD40B02B4ED353006D9B0C /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +219,7 @@
 		A5BD40AF2B4ED2F4006D9B0C /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				A5BD40B02B4ED353006D9B0C /* UIProtocol.swift */,
+				A5BD40B02B4ED353006D9B0C /* Protocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 				A52E1E222B4EBF7200CA79D5 /* UIViewController+Extension.swift in Sources */,
 				A52E1E042B4D92E700CA79D5 /* StepTwoCollectionViewCell.swift in Sources */,
 				A52E1DFA2B4D82E000CA79D5 /* MagazineInfo.swift in Sources */,
-				A5BD40B12B4ED353006D9B0C /* UIProtocol.swift in Sources */,
+				A5BD40B12B4ED353006D9B0C /* Protocol.swift in Sources */,
 				A526B1FA2B5043FD0067FCDB /* ADViewController.swift in Sources */,
 				A596B3F22B49A5F100F37489 /* SecondTableViewController.swift in Sources */,
 				A596B3DC2B49537700F37489 /* AppDelegate.swift in Sources */,

@@ -16,16 +16,9 @@ class webViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         if let url = URL(string: stringURL) {
             let request = URLRequest(url: url)
             webView.load(request)
         }
-        
-
-        
     }
-    
-
-
 }
