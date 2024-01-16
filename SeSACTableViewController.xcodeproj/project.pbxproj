@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		A5034DD12B54EF3C00C6A7AE /* TravelMagazine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5034DD02B54EF3C00C6A7AE /* TravelMagazine.storyboard */; };
 		A5034DD32B54FB3900C6A7AE /* webViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5034DD22B54FB3900C6A7AE /* webViewController.swift */; };
+		A5034DFC2B56064A00C6A7AE /* TheaterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5034DFA2B56064A00C6A7AE /* TheaterData.swift */; };
+		A5034DFD2B56064A00C6A7AE /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5034DFB2B56064A00C6A7AE /* MapKitViewController.swift */; };
+		A5034DFF2B56066100C6A7AE /* MapKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5034DFE2B56066100C6A7AE /* MapKit.storyboard */; };
 		A526B1E92B4FD3650067FCDB /* PopularCity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A526B1E82B4FD3650067FCDB /* PopularCity.storyboard */; };
 		A526B1EB2B4FD4D00067FCDB /* DetailCityInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A526B1EA2B4FD4D00067FCDB /* DetailCityInfoViewController.swift */; };
 		A526B1ED2B5015940067FCDB /* TravelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A526B1EC2B5015930067FCDB /* TravelModel.swift */; };
@@ -49,6 +52,9 @@
 /* Begin PBXFileReference section */
 		A5034DD02B54EF3C00C6A7AE /* TravelMagazine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelMagazine.storyboard; sourceTree = "<group>"; };
 		A5034DD22B54FB3900C6A7AE /* webViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewController.swift; sourceTree = "<group>"; };
+		A5034DFA2B56064A00C6A7AE /* TheaterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterData.swift; sourceTree = "<group>"; };
+		A5034DFB2B56064A00C6A7AE /* MapKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
+		A5034DFE2B56066100C6A7AE /* MapKit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapKit.storyboard; sourceTree = "<group>"; };
 		A526B1E82B4FD3650067FCDB /* PopularCity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopularCity.storyboard; sourceTree = "<group>"; };
 		A526B1EA2B4FD4D00067FCDB /* DetailCityInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCityInfoViewController.swift; sourceTree = "<group>"; };
 		A526B1EC2B5015930067FCDB /* TravelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModel.swift; sourceTree = "<group>"; };
@@ -119,6 +125,16 @@
 				A526B1F92B5043FD0067FCDB /* ADViewController.swift */,
 			);
 			path = PopularCity;
+			sourceTree = "<group>";
+		};
+		A5034DF92B56062600C6A7AE /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				A5034DFA2B56064A00C6A7AE /* TheaterData.swift */,
+				A5034DFB2B56064A00C6A7AE /* MapKitViewController.swift */,
+				A5034DFE2B56066100C6A7AE /* MapKit.storyboard */,
+			);
+			path = MapKit;
 			sourceTree = "<group>";
 		};
 		A526B1E72B4FCE720067FCDB /* 과제 연습용 */ = {
@@ -207,6 +223,7 @@
 				A52E1DFB2B4D836700CA79D5 /* Cell */,
 				A5034DCF2B54EDB800C6A7AE /* TravelMagazine */,
 				A5034DD42B54FE9700C6A7AE /* PopularCity */,
+				A5034DF92B56062600C6A7AE /* MapKit */,
 				A596B3DB2B49537700F37489 /* AppDelegate.swift */,
 				A596B3DD2B49537700F37489 /* SceneDelegate.swift */,
 				A596B3E42B49537900F37489 /* Assets.xcassets */,
@@ -288,6 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5034DFF2B56066100C6A7AE /* MapKit.storyboard in Resources */,
 				A52E1E0B2B4D9CE000CA79D5 /* PopularCityCollectionViewCell.xib in Resources */,
 				A526B1F22B5024D50067FCDB /* DetailCityInfoTableViewCell.xib in Resources */,
 				A526B1E92B4FD3650067FCDB /* PopularCity.storyboard in Resources */,
@@ -318,6 +336,7 @@
 				A526B1F52B5024E60067FCDB /* ADTableViewCell.swift in Sources */,
 				A57BAA502B4C46C00007FA1D /* TravelMagazineTableViewController.swift in Sources */,
 				A526B1F12B5024D50067FCDB /* DetailCityInfoTableViewCell.swift in Sources */,
+				A5034DFC2B56064A00C6A7AE /* TheaterData.swift in Sources */,
 				A596B3F82B49B87100F37489 /* ThirdTableViewController.swift in Sources */,
 				A52E1E222B4EBF7200CA79D5 /* UIViewController+Extension.swift in Sources */,
 				A52E1E042B4D92E700CA79D5 /* StepTwoCollectionViewCell.swift in Sources */,
@@ -326,6 +345,7 @@
 				A526B1FA2B5043FD0067FCDB /* ADViewController.swift in Sources */,
 				A596B3F22B49A5F100F37489 /* SecondTableViewController.swift in Sources */,
 				A596B3DC2B49537700F37489 /* AppDelegate.swift in Sources */,
+				A5034DFD2B56064A00C6A7AE /* MapKitViewController.swift in Sources */,
 				A526B1F82B5043F10067FCDB /* TravelViewController.swift in Sources */,
 				A526B1FD2B504B150067FCDB /* Enum.swift in Sources */,
 				A596B3DE2B49537700F37489 /* SceneDelegate.swift in Sources */,
